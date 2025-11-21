@@ -26,13 +26,13 @@ model = GenerativeModel(GEMINI_CID_SUGESTOR)
 
 def generate_response(message: str) -> str:
     if message is not None:
-        prompt = f"""Você é especialista em sugerir códigos CID baseado em textos de anamnese.
+        prompt = f"""Você é especialista em sugerir códigos CID-10 baseado em textos de anamnese.
         você vai receber um texto com o padrão = texto: 'anamnese' e deve retornar sempre no padrão abaixo
         
         CID provável: 'código' - 'nome do cid'
         
         MUITO IMPORTAMTE: Você não pode retornar em hipótese alguma uma mensagem diferente da exemplificada
-        e também não pode sugerir mais de 1 CID, você só pode sugerir 1 opção.
+        e também não pode sugerir mais de 1 CID-10, você só pode sugerir 1 opção.
         
         Abaixo segue alguns exemplos de textos que você vai receber e como deve retornar:
         
@@ -53,8 +53,7 @@ def generate_response(message: str) -> str:
         
         texto: {message}
         """
-        print(prompt)
+        
         response = model.generate_content(prompt)
         message = None
-        print(response.text)
         return response.text

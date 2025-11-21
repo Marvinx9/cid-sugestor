@@ -15,7 +15,6 @@ def base():
         session['response_gemini'] = generate_response(message)
         return redirect(url_for('base'))
     
-        print(message)
     response_gemini = session.pop('response_gemini', None)
     
     return render_template("base.html", form_base=form_base, response_gemini=response_gemini)
